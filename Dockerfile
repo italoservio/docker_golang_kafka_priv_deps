@@ -1,8 +1,3 @@
-# Dockerfile to Golang w/ Kafka and Private Deps.
-### A Dockerfile template to run Golang with "confluent-kafka-go" package which needs "librdkafka" to be installed and a setup to download to private Golang dependency
----
-
-```sh
 FROM golang:alpine AS build
 ARG GIT_HOST
 ARG GIT_USER
@@ -34,17 +29,3 @@ WORKDIR /app/
 RUN apk add --no-cache librdkafka-dev
 COPY --from=build /app/binary /app/
 CMD ["/app/binary"]
-```
-
-### To build the image, the arguments are necessary:
-```sh
-docker build \
-  -t my-image \
-  --build-args GIT_HOST="github.com/italoservio" \
-  --build-args GIT_USER="italoservio" \
-  --build-args GIT_PASS="access_token" \
-  .
-```
-
-## 🔥 Gitlab TIP
-### To run in a **Gitlab** pipeline the user can be: `gitlab-ci-token` and the password `$CI_JOB_TOKEN`
