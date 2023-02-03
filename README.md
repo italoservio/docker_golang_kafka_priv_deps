@@ -40,11 +40,11 @@ CMD ["/app/binary"]
 ```sh
 docker build \
   -t my-image \
-  --build-args GIT_HOST="github.com/italoservio" \
+  --build-args GIT_HOST="github.com" \
   --build-args GIT_USER="italoservio" \
   --build-args GIT_PASS="access_token" \
   .
 ```
 
 ## 🔥 Gitlab TIP
-### To run in a **Gitlab** pipeline the user can be: `gitlab-ci-token` and the password `$CI_JOB_TOKEN`
+### To run in a **Gitlab** pipeline the GIT_USER can be: `gitlab-ci-token`, the GIT_PASS `$CI_JOB_TOKEN` and the GIT_HOST `$CI_SERVER_HOST`.
